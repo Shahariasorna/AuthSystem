@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.user.create');
     }
 
     /**
@@ -35,7 +35,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_name' => 'required|max:20',
+            'user_mail' => 'required',
+            'phone_number' => 'required|numeric|phone_number|size:11',
+            'user_password' => 'required|min:8',
+            'approve_by' => 'required',
+            'user_img' => 'required|max:5024|image|mimes:png,jpg,svg,webp,jpeg'
+        ]);
     }
 
     /**

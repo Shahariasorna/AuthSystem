@@ -1,10 +1,15 @@
 <?php
 
-use App\Http\Controllers\backend\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\UserController;
 
 Route::get('/', function () {
-    return view('template.master');
+    return view('home');
 });
 
 Route::resource('/user', UserController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

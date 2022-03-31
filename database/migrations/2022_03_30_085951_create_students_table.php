@@ -15,13 +15,15 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('department_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('department_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('department_id');
             $table->integer('board_roll');
-            $table->integer('registation_no');
+            $table->integer('registation_number');
             $table->string('session');
             $table->string('semester');
             $table->string('exam_year');
+
             $table->timestamps();
         });
     }
